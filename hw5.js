@@ -15,40 +15,12 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 6946);
 
-var tablify = function(object) {
-    {
-        //Declare variable
-        var list = '<ul>';
-        //Loop until end
-        for (var key in object)
-        {
-            //Set parameters
-            list += '<li><strong style="font-family: monospace;">' + key + '</strong>: ' + object[key] + '</li>';
-        }
-        //Return
-        return list + '</ul>';
-    }
-}
 app.get('/',function(req,res){
     res.render('get');
-
-    var table = document.createElement('table');
-    table += '<table><tbody><tr>';
-    table += '<td>url: ' + req.url + '</td>';
-    table += '<td>body: ' + tablify(req.body) + '</td>';
-    table += '</tr></tbody></table>';
-    res.send(table);
 });
 
 app.post('/',function(req,res){
     res.render('post');
-    
-    var table = document.createElement('table');
-    table += '<table><tbody><tr>';
-    table += '<td>url: ' + req.url + '</td>';
-    table += '<td>body: ' + tablify(req.body) + '</td>';
-    table += '</tr></tbody></table>';
-    res.send(table);
 });
 
 app.use(function(req,res){
