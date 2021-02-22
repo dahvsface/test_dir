@@ -14,13 +14,6 @@ app.use(bodyParser.json());
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 6946);
-/*
-function displayPage(){
-    var display = {};
-    display.out = (new Date(Date.now())).toLocaleTimeString('en-US');
-    return display;
-}
-*/
 
 var tablify = function(object) {
     {
@@ -48,6 +41,8 @@ app.get('/',function(req,res){
 });
 
 app.post('/',function(req,res){
+    res.render('post');
+    
     var table = document.createElement('table');
     table += '<table><tbody><tr>';
     table += '<td>url: ' + req.url + '</td>';
